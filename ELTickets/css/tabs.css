@@ -1,0 +1,346 @@
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;color:#565759;}
+
+/* Style the tab */
+div.border {
+    border: 1px solid #ccc;
+    height: 885px;
+}
+div.tab {
+    float: left;
+    background-color: white;
+    color:#565759;
+    width: 20%;
+    height: 100%;
+    border: 0.5px solid #ccc;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    display: block;
+    background-color: #ffffff;
+    color: black;
+    padding: 11px 18px;
+    width: 99%;
+    border:  none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+    border-bottom: 0.5px solid black;
+    border-bottom-color: #dbdbdb;
+}
+
+/* Change tab background color of buttons on hover */
+div.tab button:hover {
+    background-color: #2b2c2d;
+    color:white;
+}
+
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: #484b4f;
+    color:white;
+}
+
+
+
+/* Style the tab content */
+.tabcontent {
+    color:#565759;
+    width: 79%;
+    height: 885px;
+    margin: 0 auto;
+    padding: 0px 0px;
+    border-left: none;
+    overflow: scroll;
+}
+
+/* Style the tab content */
+
+
+/* style accordian */
+button.accordion {
+    background-color: white;
+    color:black;
+    cursor: pointer;
+    width: 1300px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: 0.1s;
+    border-bottom: 0.5px solid black;
+    border-bottom-color: #dbdbdb;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ffa60c;
+    color: white;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+
+/* style glowrow */
+tr.glowrow {
+    background-color: #ffffff;
+    color:#48494c;
+    cursor: pointer;
+    width: 1300px;
+    border: 0.5px solid black;
+    text-align: left;
+
+    font-size: 14px;
+    transition: 0.1s;
+    border-bottom: 0.5px solid black;
+    border-bottom-color: #000000;
+}
+
+tr.glowrow.active, .glowrow:hover {
+    background-color: #ffa60c;
+    color: white;
+}
+
+tr.glowrow:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+tr.glowrow.active:after {
+    content: "\2212";
+}
+
+.taskRows:hover {
+    background-color: #d2fff0;
+}
+
+div.panel {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+td {
+    height: 25px;
+    border-bottom: 0.2px solid #eaeaea;
+}
+
+
+.modaltable td:nth-of-type(odd) {
+    border-bottom: 0px;
+    width: 14%;
+    font-weight: bold;
+}
+
+.modaltable td:nth-of-type(even) {
+    border-bottom: 0px;
+    width: 36%;
+}
+
+.modaltable input {
+    width: 95%;
+}
+
+.modaltable select {
+    width: 95%;
+}
+
+.tickethoriztab {
+    overflow: hidden;
+    background-color: white;
+    min-height:32px
+}
+
+/* Style the buttons inside the tab */
+.tickethoriztab button {
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 7px;
+    transition: 0.3s;
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+}
+
+/* Change background color of buttons on hover */
+.tickethoriztab button:focus {
+    background-color: #0aa8a0;
+    color: white;
+}
+.actabs:active {
+    background-color: #0aa8a0;
+    color: white;
+}
+
+
+#pendingparts:hover {
+    background-color:#12778c;
+    color: white;
+}
+
+#pendingparts.active {
+    background-color:#12778c;
+    color: white;
+}
+
+.partstab {
+    overflow: hidden;
+    background-color: white;
+    width:15%;
+}
+
+/* Style the buttons inside the tab */
+.partstab button {
+    background-color: white;
+    border: 1px solid #ccc;;
+    color: black;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 7px;
+    transition: 0.3s;
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+}
+
+/* Change background color of buttons on hover */
+.partstab button:hover {
+    background-color: #00c43e;
+    color: white;
+}
+
+/* Create an active/current tablink class */
+.partstab button.active {
+    background-color: #00c43e;
+    color: white;
+}
+.notetip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.notetiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 0%;
+    margin-left: -60px;
+}
+
+.notetip .notetiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.notetip:hover .notetiptext {
+    visibility: visible;
+}
+
+.tdforparts:hover {
+    background-color: #2b2c2d;
+    color:white;
+}
+
+.buttonlocat {
+    position: fixed;
+    top: 375px;
+    right: 19px;
+    float: right;
+    z-index: 100;
+}
+
+.btn-circle {
+    width: 47px;
+    height: 47px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 1.428571429;
+    border-radius: 25px;
+}
+.glowing {
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+}
+.glowing2 {
+    -webkit-animation: glowing2 1500ms infinite;
+    -moz-animation: glowing2 1500ms infinite;
+    -o-animation: glowing2 1500ms infinite;
+    animation: glowing2 1500ms infinite;
+}
+.glowing3 {
+    -webkit-animation: glowing3 1500ms infinite;
+    -moz-animation: glowing3 1500ms infinite;
+    -o-animation: glowing3 1500ms infinite;
+    animation: glowing3 1500ms infinite;
+}
+.glyphicon-flash {
+    font-size: 20px;
+    line-height: 1.5;
+}
+@keyframes glowing {
+    0% { background-color: #ffffff; box-shadow: 0 0 3px #ffffff; }
+    50% { background-color: #67ff81; box-shadow: 0 0 15px #6cff85; }
+    100% { background-color: #ffffff; box-shadow: 0 0 3px #ffffff; }
+}
+@keyframes glowing2 {
+    0% { background-color: #ffffff; box-shadow: 0 0 3px #ffffff; }
+    50% { background-color: #ffc354; box-shadow: 0 0 15px #ffc354; }
+    100% { background-color: #ffffff; box-shadow: 0 0 3px #ffffff; }
+}
+@keyframes glowing3 {
+    0% { background-color: #ffffff; box-shadow: 0 0 3px #ffffff; }
+    50% { background-color: #52ceff; box-shadow: 0 0 15px #52ceff; }
+    100% { background-color: #ffffff; box-shadow: 0 0 3px #ffffff; }
+}
+
+/**** STYLING FOR ATTACHMENTS POPUP ***/
+.messagepop {
+    background-color:#FFFFFF;
+    border:1px solid #999999;
+    cursor:default;
+    display:none;
+    margin-top: 15px;
+    position:absolute;
+    text-align:left;
+    width:360px;
+    z-index:50;
+    padding: 15px 15px 10px;
+}
+
+.messagepop p, .messagepop.div {
+    padding-bottom: 8px;
+}

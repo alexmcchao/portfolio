@@ -1,0 +1,147 @@
+<script>
+  $(function(){
+    $.get("ELTickets/Utility/handleGlow.php",
+    {
+      action: "checkTicket",
+      contentType: "application/json",
+      user: $('#fullname_socket').val()
+    }).done(function(data) {
+      if(data.openGlow != 0){
+        if(data.openGlow == 1)
+          $('#openElTasks').addClass('glowing');
+        else
+          $('#openElTasks').addClass('glowing' + data.openGlow);
+      }
+      if(data.taskGlow != 0){
+        if(data.taskGlow == 1)
+          $('#tasktab').addClass('glowing');
+        else
+          $('#tasktab').addClass('glowing' + data.taskGlow);
+      }
+      if(data.submittedGlow != 0){
+        if(data.submittedGlow == 1)
+          $('#submittedtab').addClass('glowing');
+        else
+          $('#submittedtab').addClass('glowing' + data.submittedGlow);
+      }
+      if(data.closeGlow != 0){
+        if(data.closeGlow == 1)
+          $('#closeELTasks').addClass('glowing');
+        else
+          $('#closeELTasks').addClass('glowing' + data.closeGlow);
+      }
+      if(data.historyGlow != 0){
+        if(data.historyGlow == 1)
+          $('#logstab').addClass('glowing');
+        else
+          $('#logstab').addClass('glowing' + data.historyGlow);
+      }
+    })
+  });
+</script>
+<head>
+    <title></title>
+    <!--<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>-->
+</head>
+<body>
+<div class="navbar-fixed buttonlocat">
+
+    <button id="openElTasks" class="btn btn-success btn-circle" style="background-color: #ffffff;color:black"><i class="glyphicon glyphicon-flash"></i></button>
+
+</div>
+<!--EL Tasks Modal -->
+<div class="modal right fade" id="eltasks" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" style="top:0px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="ticketModel">
+
+            <div style="border-bottom: 4px solid #348974" class="modal-header">
+                <button type="button" id="closeElTasks" data-dismiss="modal" aria-label="Close"
+                class="pull-left btn btn-circle" style="background-color: #ffffff;color:black;position:fixed;left:30px">
+                <span aria-hidden="true" class="glyphicon glyphicon-flash"></span></button>
+                <h2 style="font-size: 30px;text-align: center" class="modal-title" id="myModalLabel2"><b>EL Tasks</b></h2>
+            </div>
+
+            <div id="productdetails" class="tickethoriztab">
+                <button id="tasktab" class="actabs" style="width:24%">Tasks</button>
+                <button id="submittedtab" class="actabs" style="width:24%">Submitted</button>
+                <button id="createtasktab" class="actabs" style="width:24%">Create</button>
+                <button id="logstab" class="actabs" style="width:24%">History</button>
+            </div>
+            <!--<span id="popup" class="popup"></span>-->
+            <div id="editbody" style="margin-left: 30px;margin-top: 20px;margin-right: 30px">
+                <!-- View Create Tasks Tab -->
+                <div id="CreateTask" style="display:none;">
+                    <div id="ticketresponse" style="margin-left: 30px;margin-top: 20px;color: #47a447"></div>
+                    <form id="editRequest">
+                        <div class="form-group">
+                            <br>
+                            <label for="sel2">What would you like to update?</label>
+                            <select class="form-control" id="category">
+                                <option selected disabled>Category</option>
+                                <option value="Images">Images</option>
+                                <option value="Product Dimensions">Product Dimensions</option>
+                                <option value="Shipping Dimensions">Shipping Dimensions</option>
+                                <option value="Description">Description</option>
+                                <option value="Other">Other</option>
+                            </select><br>
+                            <select class="form-control" id="customer">
+                                <option selected disabled>Customer</option>
+                                <option value="Wayfair">Wayfair</option>
+                                <option value="OverStock">OverStock</option>
+                                <option value="Sofs">Sofs</option>
+                                <option value="Amazon">Amazon</option>
+                                <option value="Walmart">Walmart</option>
+                                <option value="Hayneedle">Hayneedle</option>
+                                <option value="Target">Target</option>
+                                <option value="Cymax">Cymax</option>
+                                <option value="Macys">Macys</option>
+                                <option value="Groupon">Groupon</option>
+                                <option value="The Home Depot">The Home Depot</option>
+                                <option value="Zulily">Zulily</option>
+                            </select>
+                            <label for="sel2">Who will be helping with this?</label>
+                            <div id='helpers'></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input class="form-control" id="subject" style="resize:none" placeholder="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment:</label>
+                            <textarea class="form-control" rows="14" id="comment" style="resize:none" placeholder="Description"></textarea>
+                        </div>
+                    </form>
+                    <button id="submitTask" class="btn btn-success btn-default"><span></span> Submit</button>
+
+                </div>
+
+                <!-- View Submitted Tasks Tab -->
+                <div id="Submitted" style="overflow-y:auto;height:835px">
+                    <div class="searchBar" id="requested" style="padding-bottom: 5px"><input type="text" id="searchValueSubmitted" class="form-control" placeholder="Search"></div>
+                    <div id="Submitted2"></div>
+                </div>
+
+                <!-- View All Tasks Tab -->
+                <div id="ViewTasks" style="overflow-y:auto;height:835px">
+                    <div class="searchBar" id="tagged" style="padding-bottom: 5px"><input type="text" id="searchValueTasks" class="form-control" placeholder="Search"></div>
+                    <div id="ViewTasks2"></div>
+                </div>
+
+                <!-- View Log Activity Tab -->
+                <div id="Log">
+                    <div class="searchBar" id="history" style="padding-bottom: 5px"><input type="text" id="searchValueHistory" class="form-control" placeholder="Search"></div>
+                    <div id="Log2"></div>
+                </div>
+
+                <!-- View Drill In Task View -->
+                <div id="drillInTaskView" style="overflow-y:auto;height:750px">
+
+                </div>
+
+
+            </div>
+
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+</body>
